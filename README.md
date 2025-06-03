@@ -27,11 +27,20 @@ mvn clean package
 docker-compose up --build
 ```
 
-### 3. Access the Dashboard
+### 3. Start Dashboard
+
+```bash
+cd tower-mission-control
+cd frontend
+npm install
+npm run dev
+```
+
+### 4. Access the Dashboard
 
 Open in browser: [http://localhost:3000](http://localhost:3000)
 
-### 4. Push Sample Events to Kafka
+### 5. Push Sample Events to Kafka
 
 Open a terminal inside the Kafka container:
 
