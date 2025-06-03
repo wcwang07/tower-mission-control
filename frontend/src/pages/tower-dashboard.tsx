@@ -9,15 +9,9 @@ export default function TowerDashboard() {
   const [role, setRole] = useState<'admin' | 'employee'>('employee');
   const [towerData, setTowerData] = useState<Record<string, TowerEvent[]>>({});
 
-  type TowerEntry = {
-    device: string;
-    os: string;
-    app: string;
-    action: string;
-    meta: { ip: string; lastSeen: string };
-  };
   
   useTowerStream((event: TowerEvent) => {
+    console.log("📥 Incoming Event:", event);
     setTowerData(prev => {
       const updated = { ...prev };
       if (!updated[event.towerId]) {
@@ -27,6 +21,7 @@ export default function TowerDashboard() {
       return updated;
     });
   });
+  
   
 
   const normalizedQuery = query.toLowerCase();

@@ -4,7 +4,9 @@ export const policyData = {
         "admin": {
           allow: [
             { app: "Spotify", action: "stream" },
-            { app: "YouTube", action: "play" }
+            { app: "YouTube", action: "play" },
+            { app: "Slack", action: "message" },
+            { app: "Zoom", action: "call" }
           ],
           deny: []
         },

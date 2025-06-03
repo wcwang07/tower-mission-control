@@ -11,11 +11,17 @@ export const useTowerStream = (
     };
 
     socket.onmessage = (event) => {
+      if (!event.data || event.data.trim() === '') {
+        console.warn('⚠️ Skipped empty WebSocket message');
+        return;
+      }
+
       try {
+        console.log('📨 Received message:', event.data);
         const json: TowerEvent = JSON.parse(event.data);
         onMessage(json);
       } catch (err) {
-        console.error('❌ Failed to parse message:', err);
+        console.error('❌ Failed to parse message:', err, 'Raw:', event.data);
       }
     };
 
@@ -27,7 +33,7 @@ export const useTowerStream = (
   }, [onMessage]);
 };
 
-// Add this above or in a shared types file:
+// Shared type
 export type TowerEvent = {
   towerId: string;
   device: string;
