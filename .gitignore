@@ -1,0 +1,7 @@
+# For both backend and client
+node_modules/
+dist/
+target/
+.env
+.DS_Store
+.vscode/
