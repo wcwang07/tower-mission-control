@@ -21,6 +21,9 @@ cd tower-mission-control
 ### 2. Run with Docker Compose
 
 ```bash
+cd tower-mission-control
+cd backend
+mvn clean package
 docker-compose up --build
 ```
 
