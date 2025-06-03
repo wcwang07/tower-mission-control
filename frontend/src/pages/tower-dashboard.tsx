@@ -6,7 +6,7 @@ import { useTowerStream, TowerEvent } from '../hooks/useTowerStream';
 
 export default function TowerDashboard() {
   const [query, setQuery] = useState('');
-  const [role, setRole] = useState<'admin' | 'employee'>('employee');
+  const [role, setRole] = useState<'tier0' | 'tier1'>('tier1');
   const [towerData, setTowerData] = useState<Record<string, TowerEvent[]>>({});
 
   
@@ -59,11 +59,11 @@ export default function TowerDashboard() {
         />
         <select
           value={role}
-          onChange={e => setRole(e.target.value as 'admin' | 'employee')}
+          onChange={e => setRole(e.target.value as 'tier0' | 'tier1')}
           className="p-2 border rounded-md shadow-sm w-full sm:w-1/3"
         >
-          <option value="employee">Employee</option>
-          <option value="admin">Admin</option>
+          <option value="tier1">Tier1</option>
+          <option value="tier0">Tier0</option>
         </select>
       </div>
 

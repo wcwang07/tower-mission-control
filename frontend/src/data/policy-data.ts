@@ -1,7 +1,7 @@
 export const policyData = {
     "enterprise-001": {
       roles: {
-        "admin": {
+        "tier0": {
           allow: [
             { app: "Spotify", action: "stream" },
             { app: "YouTube", action: "play" },
@@ -10,7 +10,7 @@ export const policyData = {
           ],
           deny: []
         },
-        "employee": {
+        "tier1": {
           allow: [
             { app: "Spotify", action: "stream" }
           ],

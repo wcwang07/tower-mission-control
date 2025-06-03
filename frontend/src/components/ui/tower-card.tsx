@@ -28,11 +28,19 @@ type Props = {
 };
 
 function isDenied(entry: TowerEntry, policy: RolePolicy) {
-  return policy.deny.some(rule => rule.app === entry.app && rule.action === entry.action);
+  return policy.deny.some(
+    rule =>
+      rule.app.toLowerCase() === entry.app.toLowerCase() &&
+      rule.action.toLowerCase() === entry.action.toLowerCase()
+  );
 }
 
 function isAllowed(entry: TowerEntry, policy: RolePolicy) {
-  return policy.allow.some(rule => rule.app === entry.app && rule.action === entry.action);
+  return policy.allow.some(
+    rule =>
+      rule.app.toLowerCase() === entry.app.toLowerCase() &&
+      rule.action.toLowerCase() === entry.action.toLowerCase()
+  );
 }
 
 export function TowerCard({ towerId, entries, rolePolicy }: Props) {
@@ -41,7 +49,6 @@ export function TowerCard({ towerId, entries, rolePolicy }: Props) {
   const renderDetailsPanel = (entry: TowerEntry) => {
     const denied = rolePolicy && isDenied(entry, rolePolicy);
     const allowed = rolePolicy && isAllowed(entry, rolePolicy);
-
     return (
       <div className="fixed right-0 top-0 w-96 h-full bg-white shadow-lg border-l p-4 z-50">
         <div className="flex justify-between items-center mb-4">
@@ -74,6 +81,7 @@ export function TowerCard({ towerId, entries, rolePolicy }: Props) {
         {entries.map((entry, idx) => {
           const denied = rolePolicy && isDenied(entry, rolePolicy);
           const allowed = rolePolicy && isAllowed(entry, rolePolicy);
+
           const status = denied ? "Denied" : allowed ? "Allowed" : "Unknown";
 
           return (
