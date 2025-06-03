@@ -102,5 +102,3 @@ An enterprise wants to:
 * Flag and remediate violations automatically
 
 ---
-
-Need help setting up a policy model or Flink enrichment layer next? Just ask. 😎
